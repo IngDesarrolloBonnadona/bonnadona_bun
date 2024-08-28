@@ -1,7 +1,8 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import { Form, Input, Button, Typography } from "antd";
-import '../login/loginUserForm.css';
+import "../login/loginUserForm.css";
+import { UserOutlined, KeyOutlined } from "@ant-design/icons";
 
 const { Title } = Typography;
 
@@ -18,7 +19,6 @@ const LoginUserForm = () => {
   };
 
   const handleSubmit = () => {
-    // Perform login logic here
     console.log("Email:", email);
     console.log("Password:", password);
   };
@@ -29,23 +29,31 @@ const LoginUserForm = () => {
         <Title level={2}>Iniciar sesión</Title>
         <Form onFinish={handleSubmit}>
           <Form.Item
-            label="Correo"
+            // label="Correo"
             name="email"
-            rules={[{ required: true, message: 'Por favor ingrese su correo' }]}
+            rules={[{ required: true, message: "Por favor ingrese su correo" }]}
           >
             <Input
               type="email"
+              placeholder="Correo"
+              prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
               value={email}
+              style={{borderRadius:"30px"}}
               onChange={handleEmailChange}
             />
           </Form.Item>
           <Form.Item
-            label="Contraseña"
+            // label="Contraseña"
             name="password"
-            rules={[{ required: true, message: 'Por favor ingrese su contraseña' }]}
+            rules={[
+              { required: true, message: "Por favor ingrese su contraseña" },
+            ]}
           >
             <Input.Password
+              prefix={<KeyOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
               value={password}
+              placeholder="Contreseña"
+              style={{borderRadius:"30px"}}
               onChange={handlePasswordChange}
             />
           </Form.Item>
@@ -53,7 +61,7 @@ const LoginUserForm = () => {
             <a href="#">¿Olvidaste tu contraseña?</a>
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-button">
+            <Button type="primary" htmlType="submit" className="login-button" style={{borderRadius:"30px"}}>
               Ingresar
             </Button>
           </Form.Item>
