@@ -38,7 +38,7 @@ const LoginUserForm = () => {
               placeholder="Correo"
               prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
               value={email}
-              style={{borderRadius:"30px"}}
+              style={{ borderRadius: "30px" }}
               onChange={handleEmailChange}
             />
           </Form.Item>
@@ -53,7 +53,7 @@ const LoginUserForm = () => {
               prefix={<KeyOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
               value={password}
               placeholder="Contreseña"
-              style={{borderRadius:"30px"}}
+              style={{ borderRadius: "30px" }}
               onChange={handlePasswordChange}
             />
           </Form.Item>
@@ -61,7 +61,12 @@ const LoginUserForm = () => {
             <a href="#">¿Olvidaste tu contraseña?</a>
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-button" style={{borderRadius:"30px"}}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-button"
+              style={{ borderRadius: "30px" }}
+            >
               Ingresar
             </Button>
           </Form.Item>

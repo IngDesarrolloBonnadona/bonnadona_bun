@@ -14,9 +14,10 @@ const HomePage: React.FC = () => {
         justifyContent: "space-around",
         alignItems: "center",
         padding: "0 50px",
-        // backgroundImage: "url('/background/back-nunny.jpg')",
-        // backgroundSize: "cover",
-        // backgroundPosition: "center",
+        // backgroundImage: "url('/background/back-white-elegant.jpg')",
+        backgroundImage: "url('/background/back-soft-blue-lines-wave.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       {/* Lado Izquierdo: Contenido Principal */}
