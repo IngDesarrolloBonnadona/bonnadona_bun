@@ -16,6 +16,7 @@ const ButtonAuth = () => {
       type="primary"
       size="large"
       style={{
+        marginTop: "1rem",
         borderRadius: 31,
         fontWeight: "bold",
         backgroundColor: "#0085c8",

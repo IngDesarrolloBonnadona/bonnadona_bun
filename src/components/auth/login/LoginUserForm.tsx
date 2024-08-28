@@ -26,7 +26,17 @@ const LoginUserForm = () => {
   return (
     <div className="container">
       <div className="login-form">
-        <Title level={2}>Iniciar sesión</Title>
+        <Title
+          style={{
+            textAlign: "center",
+            fontWeight: "normal",
+            lineHeight: 1.3,
+            marginBottom: "2rem",
+          }}
+          level={2}
+        >
+          Iniciar sesión
+        </Title>
         <Form onFinish={handleSubmit}>
           <Form.Item
             // label="Correo"

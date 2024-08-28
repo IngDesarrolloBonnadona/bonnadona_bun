@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import ButtonAuth from "@/components/auth/ButtonAuth";
 import { ImagesLinksApp } from "../../public/images_apps/imagesLinksApp";
-import '../app/global.css'
+import "../app/global.css";
 
 const HomePage: React.FC = () => {
   return (
@@ -39,8 +39,26 @@ const HomePage: React.FC = () => {
           style={{ marginBottom: "20px" }}
         />
 
-        <h1 style={{ fontSize: "2em", margin: "0" }}>Bonnadona HUB</h1>
-        <p style={{ marginBottom: "40px", color: "#8c8c8c" }}>Aplicaciones</p>
+        <h2
+          className="presentation-text"
+          style={{
+            textAlign: "center",
+            fontWeight: "bold",
+            lineHeight: 1.3,
+          }}
+        >
+          Bonnadona HUB
+        </h2>
+        <h3
+          className="presentation-text"
+          style={{
+            textAlign: "center",
+            fontWeight: "normal",
+            lineHeight: 1.3,
+          }}
+        >
+          Aplicaciones
+        </h3>
 
         <ButtonAuth />
       </div>
