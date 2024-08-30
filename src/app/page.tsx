@@ -4,85 +4,132 @@ import Image from "next/image";
 import ButtonAuth from "@/components/auth/ButtonAuth";
 import { ImagesLinksApp } from "../../public/images_apps/imagesLinksApp";
 import "../app/global.css";
+import { Card, Col } from "antd";
 
 const HomePage: React.FC = () => {
   return (
     <div
+      className="homepage"
       style={{
+        width: "100%",
+        height: "100%",
         display: "flex",
-        height: "100vh",
-        justifyContent: "space-around",
-        alignItems: "center",
-        padding: "0 50px",
-        // backgroundImage: "url('/background/back-white-elegant.jpg')",
-        backgroundImage: "url('/background/back-soft-blue-lines-wave.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        flexFlow: "column wrap",
       }}
     >
-      {/* Lado Izquierdo: Contenido Principal */}
       <div
+        className="background-page"
         style={{
+          position: "fixed",
+          width: "100%",
+          height: "100%",
+          backgroundImage: "url('/background/back-soft-blue-lines-wave.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.4,
+        }}
+      />
+
+      <div
+        className="content-homepage"
+        style={{
+          zIndex: 1,
           display: "flex",
-          flexDirection: "column",
+          flexFlow: "column wrap",
           justifyContent: "center",
-          alignItems: "flex-start",
-          animation: "fadeIn 1s ease-in-out",
+          alignItems: "center",
+          minHeight: "100vh",
         }}
       >
-        {/* Logo Bonnadona */}
-        <Image
-          src={"/logos/LOGO-BONNADONA-2.png"}
-          alt="Logo de Bonnadona"
-          width={300}
-          height={150}
-          style={{ marginBottom: "20px" }}
-        />
-
-        <h2
-          className="presentation-text"
+        <div
+          className="bonna-logo"
           style={{
-            textAlign: "center",
-            fontWeight: "bold",
-            lineHeight: 1.3,
+            // display: "flex",
+            // justifyContent: "left",
+            // paddingTop: "22px",
+            position: "absolute",
+            top: "22px",
+            right: "22px",
           }}
         >
-          Bonnadona HUB
-        </h2>
-        <h3
-          className="presentation-text"
-          style={{
-            textAlign: "center",
-            fontWeight: "normal",
-            lineHeight: 1.3,
-          }}
-        >
-          Aplicaciones
-        </h3>
-
-        <ButtonAuth />
-      </div>
-
-      {/* Lado Derecho: Imágenes */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "20px",
-          // justifyContent: "center",
-          // alignItems: "center",
-          animation: "slideIn 1s ease-in-out",
-        }}
-      >
-        {ImagesLinksApp.map((src, index) => (
-          <Image
-            key={index}
-            src={src}
-            alt={`Image ${index}`}
-            width={90}
-            height={90}
+          <img
+            src="/logos/LOGO-BONNADONA.png"
+            alt="Logo de Bonnadona"
+            style={{ height: 80 }}
           />
-        ))}
+        </div>
+
+        <Col
+          xs={24}
+          lg={24}
+          style={{
+            padding: "0px 7px",
+            width: "100vw",
+            maxWidth: "450px",
+            minWidth: "231px",
+          }}
+        >
+          <Card
+            className="content-card"
+            style={{
+              alignItems: "center",
+              alignContent: "center",
+              justifyContent: "center",
+              backgroundColor: "#fcfcfc",
+              boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+              paddingBlock: "13px",
+              paddingInline: "13px",
+              marginBlock: "31px",
+              marginInline: "13px",
+            }}
+          >
+            <div
+              className="bonnadona-hub-logo"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                paddingBlock: "1px",
+              }}
+            >
+              <img
+                src="/logos/LOGO-BONNADONA-HUB.png"
+                alt="Logo de Bonnadona HUB"
+                style={{ height: 120, marginBottom: 30 }}
+              />
+            </div>
+
+            <div className="text-card">
+              <h3
+                className="presentation-text"
+                style={{
+                  textAlign: "center",
+                  fontWeight: "bold",
+                  lineHeight: 1.3,
+                  marginBottom: 15,
+                }}
+              >
+                Plataforma de acceso a las aplicaciones de la Clínica Bonnadona
+              </h3>
+              {/* <h3
+                className="presentation-text"
+                style={{
+                  textAlign: "center",
+                  fontWeight: "normal",
+                  lineHeight: 1.3,
+                }}
+              >
+                Trámites en línea para hacer más fácil y ágil tus solicitudes
+                con nosotros, a un solo clic de distancia.
+              </h3> */}
+              <div
+                className="auth-button"
+                style={{ display: "flex", justifyContent: "center" }}
+              >
+                <ButtonAuth />
+              </div>
+            </div>
+          </Card>
+        </Col>
       </div>
     </div>
   );
