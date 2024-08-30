@@ -14,11 +14,10 @@ const ButtonAuth = () => {
       onClick={handleLogin}
       className="button-signin"
       type="primary"
-      size="large"
+      // size="large"
       style={{
         marginTop: "1rem",
-        borderRadius: 31,
-        fontWeight: "bold",
+        borderRadius: "30px",
         backgroundColor: "#0085c8",
       }}
     >

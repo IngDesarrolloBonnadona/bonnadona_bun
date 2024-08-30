@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { Form, Input, Button, Typography } from "antd";
-import "../login/loginUserForm.css";
 import { UserOutlined, KeyOutlined } from "@ant-design/icons";
 
 const { Title } = Typography;
@@ -24,8 +23,29 @@ const LoginUserForm = () => {
   };
 
   return (
-    <div className="container">
-      <div className="login-form">
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundImage: "url('/background/back-soft-blue-lines-wave.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.4)",
+          padding: "2rem",
+          borderRadius: "20px",
+          boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+          maxWidth: "400px",
+          width: "100%",
+        }}
+      >
         <Title
           style={{
             textAlign: "center",
@@ -39,7 +59,6 @@ const LoginUserForm = () => {
         </Title>
         <Form onFinish={handleSubmit}>
           <Form.Item
-            // label="Correo"
             name="email"
             rules={[{ required: true, message: "Por favor ingrese su correo" }]}
           >
@@ -53,7 +72,6 @@ const LoginUserForm = () => {
             />
           </Form.Item>
           <Form.Item
-            // label="Contraseña"
             name="password"
             rules={[
               { required: true, message: "Por favor ingrese su contraseña" },
@@ -62,7 +80,7 @@ const LoginUserForm = () => {
             <Input.Password
               prefix={<KeyOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
               value={password}
-              placeholder="Contreseña"
+              placeholder="Contraseña"
               style={{ borderRadius: "30px" }}
               onChange={handlePasswordChange}
             />
@@ -70,12 +88,15 @@ const LoginUserForm = () => {
           <Form.Item>
             <a href="#">¿Olvidaste tu contraseña?</a>
           </Form.Item>
-          <Form.Item>
+          <Form.Item style={{ textAlign: "center" }}>
             <Button
               type="primary"
               htmlType="submit"
-              className="login-button"
-              style={{ borderRadius: "30px" }}
+              style={{
+                borderRadius: "30px",
+                textAlign: "center",
+                backgroundColor: "#0085c8",
+              }}
             >
               Ingresar
             </Button>

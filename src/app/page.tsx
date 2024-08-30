@@ -4,7 +4,7 @@ import Image from "next/image";
 import ButtonAuth from "@/components/auth/ButtonAuth";
 import { ImagesLinksApp } from "../../public/images_apps/imagesLinksApp";
 import "../app/global.css";
-import { Card, Col } from "antd";
+import { Col } from "antd";
 
 const HomePage: React.FC = () => {
   return (
@@ -69,66 +69,40 @@ const HomePage: React.FC = () => {
             minWidth: "231px",
           }}
         >
-          <Card
-            className="content-card"
+          <div
+            className="bonnadona-hub-logo fade-in"
             style={{
-              alignItems: "center",
-              alignContent: "center",
+              display: "flex",
               justifyContent: "center",
-              backgroundColor: "#fcfcfc",
-              boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-              paddingBlock: "13px",
-              paddingInline: "13px",
-              marginBlock: "31px",
-              marginInline: "13px",
+              paddingBlock: "1px",
             }}
           >
-            <div
-              className="bonnadona-hub-logo"
+            <img
+              src="/logos/LOGO-BONNADONA-HUB.png"
+              alt="Logo de Bonnadona HUB"
+              style={{ height: 120, marginBottom: 30 }}
+            />
+          </div>
+
+          <div className="text">
+            <h3
+              className="presentation-text"
               style={{
-                display: "flex",
-                justifyContent: "center",
-                paddingBlock: "1px",
+                textAlign: "center",
+                fontWeight: "bold",
+                lineHeight: 1.3,
+                marginBottom: 15,
               }}
             >
-              <img
-                src="/logos/LOGO-BONNADONA-HUB.png"
-                alt="Logo de Bonnadona HUB"
-                style={{ height: 120, marginBottom: 30 }}
-              />
+              Plataforma de acceso a las aplicaciones de la Clínica Bonnadona
+            </h3>
+            <div
+              className="auth-button"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <ButtonAuth />
             </div>
-
-            <div className="text-card">
-              <h3
-                className="presentation-text"
-                style={{
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  lineHeight: 1.3,
-                  marginBottom: 15,
-                }}
-              >
-                Plataforma de acceso a las aplicaciones de la Clínica Bonnadona
-              </h3>
-              {/* <h3
-                className="presentation-text"
-                style={{
-                  textAlign: "center",
-                  fontWeight: "normal",
-                  lineHeight: 1.3,
-                }}
-              >
-                Trámites en línea para hacer más fácil y ágil tus solicitudes
-                con nosotros, a un solo clic de distancia.
-              </h3> */}
-              <div
-                className="auth-button"
-                style={{ display: "flex", justifyContent: "center" }}
-              >
-                <ButtonAuth />
-              </div>
-            </div>
-          </Card>
+          </div>
         </Col>
       </div>
     </div>
