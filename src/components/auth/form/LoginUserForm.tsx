@@ -2,12 +2,14 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Typography } from "antd";
 import { UserOutlined, KeyOutlined } from "@ant-design/icons";
+import TwoFactorAuthModal from "../modal/TwoFactorAuthModal";
 
 const { Title } = Typography;
 
 const LoginUserForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -20,6 +22,16 @@ const LoginUserForm = () => {
   const handleSubmit = () => {
     console.log("Email:", email);
     console.log("Password:", password);
+    setIsModalVisible(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleVerify = (code: string) => {
+    console.log("Código verificado:", code);
+    setIsModalVisible(false);
   };
 
   return (
@@ -92,6 +104,7 @@ const LoginUserForm = () => {
             <Button
               type="primary"
               htmlType="submit"
+              className="login-button"
               style={{
                 borderRadius: "30px",
                 textAlign: "center",
@@ -103,6 +116,11 @@ const LoginUserForm = () => {
           </Form.Item>
         </Form>
       </div>
+      <TwoFactorAuthModal
+        visible={isModalVisible}
+        onClose={handleModalClose}
+        onVerify={handleVerify}
+      />
     </div>
   );
 };

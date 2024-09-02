@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import ButtonAuth from "@/components/auth/ButtonAuth";
+import ButtonAuth from "@/components/auth/button/ButtonAuth";
 import { ImagesLinksApp } from "../../public/images_apps/imagesLinksApp";
 import "../app/global.css";
 import { Col } from "antd";
