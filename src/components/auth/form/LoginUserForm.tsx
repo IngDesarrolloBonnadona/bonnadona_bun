@@ -75,6 +75,7 @@ const LoginUserForm = () => {
             rules={[{ required: true, message: "Por favor ingrese su correo" }]}
           >
             <Input
+              className="custom-input"
               type="email"
               placeholder="Correo"
               prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
@@ -90,6 +91,7 @@ const LoginUserForm = () => {
             ]}
           >
             <Input.Password
+              className="custom-input"
               prefix={<KeyOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
               value={password}
               placeholder="Contraseña"

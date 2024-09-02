@@ -25,26 +25,23 @@ const TwoFactorAuthModal: React.FC<TwoFactorAuthModalProps> = ({
   };
 
   return (
-    <Modal
-      title="Autenticación en dos fases"
-      open={visible}
-      onCancel={onClose}
-      footer={null}
-    >
+    <Modal centered open={visible} onCancel={onClose} footer={null}>
       <div style={{ textAlign: "center" }}>
-        <Title level={4} style={{ marginBottom: "1rem" }}>
+        <Title level={5} style={{ marginBottom: "1rem" }}>
           Ingresa el código de verificación
         </Title>
         <Input
+          className="custom-input"
           placeholder="Código"
           value={code}
           onChange={handleChange}
-          style={{ marginBottom: "1rem", borderRadius: "8px" }}
+          style={{ borderRadius: "30px" }}
         />
         <Button
           type="primary"
           onClick={handleVerify}
           style={{
+            marginTop: "1rem",
             borderRadius: "30px",
             textAlign: "center",
             backgroundColor: "#0085c8",

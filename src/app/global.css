@@ -23,6 +23,11 @@ body {
   overflow-x: hidden;
 }
 
+.custom-input {
+  border-color: #013B5A !important;
+  border-width: 1px !important; 
+}
+
 /* .demo-logo {
   width: 80px;
   min-width: 120px;
