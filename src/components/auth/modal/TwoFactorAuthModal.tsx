@@ -25,7 +25,7 @@ const TwoFactorAuthModal: React.FC<TwoFactorAuthModalProps> = ({
   const [isSubmittingConfirm, setIsSubmittingConfirm] = useState(false);
   const [resendCodeDisable, setResendCodeDisable] = useState(true);
   const [isSubmittingResendCode, setIsSubmittingResendCode] = useState(false);
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCode(e.target.value);
   };
@@ -41,9 +41,7 @@ const TwoFactorAuthModal: React.FC<TwoFactorAuthModalProps> = ({
     window.location.reload();
   };
 
-  const handleButtonClick = () => {
-
-  };
+  const handleButtonClick = () => {};
 
   return (
     <div>
@@ -107,8 +105,7 @@ const TwoFactorAuthModal: React.FC<TwoFactorAuthModalProps> = ({
               marginBlock: 7,
             }}
           >
-            and*******ra@gmail.com
-            {/* {maskEmail('andressierra@gmail.com')} */}
+            {maskEmail("andressierra@gmail.com")}
           </h5>
 
           {/* <CustomLoadingOverlay isLoading={isPageLoadingState} /> */}
@@ -153,7 +150,7 @@ const TwoFactorAuthModal: React.FC<TwoFactorAuthModalProps> = ({
                 id="input-code"
                 className="input-code"
                 prefix={
-                  <TbPasswordUser 
+                  <TbPasswordUser
                     className="input-code-item-icon"
                     style={{ paddingInline: "1px", color: "#0085c8" }}
                   />
@@ -165,7 +162,7 @@ const TwoFactorAuthModal: React.FC<TwoFactorAuthModalProps> = ({
                   borderWidth: 2,
                   marginTop: 10,
                   marginBottom: 4,
-                  borderRadius: '30px'
+                  borderRadius: "30px",
                 }}
                 type="tel"
                 placeholder="Código"
@@ -175,35 +172,26 @@ const TwoFactorAuthModal: React.FC<TwoFactorAuthModalProps> = ({
               />
             </Form.Item>
 
-            {/* {isSubmittingConfirm ? (
-              <CustomSpin />
-            ) : ( */}
-              <Button
-                key={"confirm-code-button"}
-                className="confirm-code-button"
-                // size="large"
-                style={{
-                  backgroundColor: "#0085c8",
-                  color: "#f2f2f2",
-                  // paddingInline: 31,
-                  borderRadius: 31,
-                  marginTop: 5,
-                  marginBottom: 13,
-                }}
-                htmlType="submit"
-                onClick={handleButtonClick}
-              >
-                Confirmar código
-              </Button>
+            <Button
+              key={"confirm-code-button"}
+              className="confirm-code-button"
+              style={{
+                backgroundColor: "#0085c8",
+                color: "#f2f2f2",
+                borderRadius: 31,
+                marginTop: 5,
+                marginBottom: 13,
+              }}
+              htmlType="submit"
+              onClick={handleButtonClick}
+            >
+              Confirmar código
+            </Button>
             {/* )} */}
           </Form>
         </div>
       </Modal>
     </div>
-
-
-
-
 
     // <Modal centered open={visible} onCancel={onClose} footer={null}>
     //   <div style={{ textAlign: "center" }}>

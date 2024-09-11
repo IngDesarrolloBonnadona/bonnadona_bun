@@ -1,6 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import { Form, Input, Button, Typography, Col, Carousel, Row, Image } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  Typography,
+  Col,
+  Carousel,
+  Row,
+  Image,
+} from "antd";
 import { UserOutlined, KeyOutlined } from "@ant-design/icons";
 import TwoFactorAuthModal from "../modal/TwoFactorAuthModal";
 
@@ -35,11 +44,9 @@ const LoginUserForm = () => {
   };
 
   const imagesCarousel = [
-    "/logos/LOGO-BONNADONA-2.png",
-    "/logos/LOGO-BONNADONA-HUB-2.png",
-    "/logos/LOGO-BONNADONA.png"
-
-  ]
+    "/images_carousel/AUTH_2FA.png",
+    "/images_carousel/AUTH_2FA2.png",
+  ];
 
   return (
     <div
@@ -77,9 +84,17 @@ const LoginUserForm = () => {
         }}
       />
       <Row gutter={[22, 32]} style={{ width: "100%", maxWidth: "1000px" }}>
-        <Col span={12} style={{ backgroundColor: "#0085c8", borderRadius: "20px" }}>
-          <div style={{ padding: "2rem" }}>
-            <Carousel autoplay arrows fade>
+        <Col
+          className="col-carousel"
+          span={12}
+          style={{
+            backgroundColor: "#0085c8",
+            borderRadius: "20px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
+          }}
+        >
+          <div style={{ padding: "32px" }}>
+            <Carousel autoplay arrows fade className="carousel-images-2FA">
               {imagesCarousel.map((image, index) => (
                 <div key={index}>
                   <img
@@ -87,12 +102,13 @@ const LoginUserForm = () => {
                     alt={`Imagen ${index + 1}`}
                     style={{
                       width: "100%",
-                      height: "100%",
-                      marginTop: "16px"
+                      height: "200%",
+                      objectFit: "cover",
                     }}
                   />
                 </div>
               ))}
+
               {/* <div>
                 <h3>
                   <span style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
@@ -126,13 +142,13 @@ const LoginUserForm = () => {
             </Carousel>
           </div>
         </Col>
-        <Col span={12}>
+        <Col span={12} className="col-login">
           <div
             style={{
               backgroundColor: "rgba(255, 255, 255, 1)",
-              padding: "2rem",
+              padding: "32px",
               borderRadius: "20px",
-              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
               maxWidth: "400px",
               width: "100%",
               position: "relative",
@@ -154,19 +170,28 @@ const LoginUserForm = () => {
               />
             </div>
             <Title
+              className="title-login"
               style={{
                 textAlign: "center",
                 fontWeight: "normal",
                 lineHeight: 1.3,
-                marginBottom: "2rem",
+                marginBottom: "32px",
               }}
               level={2}
             >
               Iniciar sesión
             </Title>
-            <Form onFinish={handleSubmit}>
+            <Form
+              id="login-form"
+              className="login-form"
+              onFinish={handleSubmit}
+              autoComplete="false"
+              initialValues={{ remember: false }}
+            >
               <Form.Item
-                name="email"
+                id="login-email-form"
+                className="login-email-form"
+                name="login-email-form"
                 rules={[
                   { required: true, message: "Por favor ingrese su correo" },
                   {
@@ -176,7 +201,7 @@ const LoginUserForm = () => {
                 ]}
               >
                 <Input
-                  className="custom-input"
+                  className="email-input"
                   type="email"
                   placeholder="Correo"
                   autoComplete="off"
@@ -187,7 +212,9 @@ const LoginUserForm = () => {
                 />
               </Form.Item>
               <Form.Item
-                name="password"
+                id="login-password-form"
+                className="login-password-form"
+                name="login-password-form"
                 rules={[
                   {
                     required: true,
@@ -197,7 +224,7 @@ const LoginUserForm = () => {
                 ]}
               >
                 <Input.Password
-                  className="custom-input"
+                  className="password-input"
                   prefix={<KeyOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
                   value={password}
                   placeholder="Contraseña"
