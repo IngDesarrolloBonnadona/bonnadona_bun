@@ -54,10 +54,9 @@ const LoginUserForm = () => {
       }
 
       if (failedAttemptsCounter >= 5) {
-        // bloquea el usuario
         setShowWarningMessage(false);
         setShowErrorMessage(true);
-        // Logica adicionales
+
       }
     }
   };
@@ -74,8 +73,11 @@ const LoginUserForm = () => {
   };
 
   const imagesCarousel = [
+    "/images_carousel/AUTH_2FA_2.png",
     "/images_carousel/AUTH_2FA.png",
-    "/images_carousel/AUTH_2FA2.png",
+    "/images_carousel/AUTH_2FA_3.png",
+    "/images_carousel/AUTH_2FA_4.png",
+    "/images_carousel/AUTH_2FA_5.png",
   ];
 
   return (
