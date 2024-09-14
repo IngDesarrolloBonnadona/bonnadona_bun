@@ -34,15 +34,15 @@ const LoginUserForm = () => {
   };
 
   const handleSubmit = () => {
-    console.log("Email:", email);
-    console.log("Password:", password);
-
     if (email === "andres@gmail.com" && password === "1234") {
-      if (failedAttemptsCounter !== 5) {
+      if (failedAttemptsCounter >= 5) {
+        setShowWarningMessage(false);
+        setShowErrorMessage(true);
+        setIsModalVisible(false);
+      } else {
         setIsModalVisible(true);
         setShowWarningMessage(false);
-      } else {
-        setShowErrorMessage(true)
+        setShowErrorMessage(false);
       }
     } else {
       var count = failedAttemptsCounter;
@@ -55,12 +55,11 @@ const LoginUserForm = () => {
 
       if (failedAttemptsCounter >= 5) {
         // bloquea el usuario
-        setShowErrorMessage(true)
         setShowWarningMessage(false);
+        setShowErrorMessage(true);
         // Logica adicionales
       }
     }
-    setShowErrorMessage(false)
   };
 
   const handleModalClose = () => {
@@ -90,7 +89,9 @@ const LoginUserForm = () => {
       {showErrorMessage && (
         <CustomMessage
           typeMessage="error"
-          message={"¡Esta cuenta se encuentra bloqueada, favor comunicarse con el departamento de sistemas!"}
+          message={
+            "¡Esta cuenta se encuentra bloqueada, favor comunicarse con el departamento de sistemas!"
+          }
         />
       )}
 
