@@ -10,9 +10,12 @@ import {
   Row,
   Image,
 } from "antd";
-import { UserOutlined, KeyOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
+import { RiLockPasswordLine } from "react-icons/ri";
 import TwoFactorAuthModal from "../modal/TwoFactorAuthModal";
 import CustomMessage from "@/components/common/custom_messages/CustomMessage";
+import { titleStyleCss } from "@/theme/text_styles";
+import CustomModalNoContent from "@/components/common/custom_modal_no_content/CustomModalNoContent";
 
 const { Title } = Typography;
 
@@ -21,6 +24,8 @@ const LoginUserForm = () => {
   const [password, setPassword] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [failedAttemptsCounter, setFailedAttemptsCounter] = useState(1);
+  const [modalForgotMyPasswordIsOpen, setModalForgotMyPasswordIsOpen] =
+    useState(false);
 
   const [showWarningMessage, setShowWarningMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
@@ -56,7 +61,6 @@ const LoginUserForm = () => {
       if (failedAttemptsCounter >= 5) {
         setShowWarningMessage(false);
         setShowErrorMessage(true);
-
       }
     }
   };
@@ -246,7 +250,9 @@ const LoginUserForm = () => {
                   <Input.Password
                     className="password-input"
                     prefix={
-                      <KeyOutlined style={{ color: "rgba(0,0,0,.25)" }} />
+                      <RiLockPasswordLine
+                        style={{ color: "rgba(0,0,0,.25)" }}
+                      />
                     }
                     value={password}
                     placeholder="Contraseña"
@@ -255,18 +261,43 @@ const LoginUserForm = () => {
                   />
                 </Form.Item>
                 <Form.Item>
-                  <a href="#">¿Olvidaste tu contraseña?</a>
+                  <a
+                    className="login-forgot-password-form"
+                    style={{
+                      ...titleStyleCss,
+                      display: "flow",
+                      fontWeight: 500,
+                    }}
+                    onClick={() => setModalForgotMyPasswordIsOpen(true)}
+                  >
+                    ¿Olvidaste tu contraseña?
+                  </a>
                 </Form.Item>
+
+                {modalForgotMyPasswordIsOpen && (
+                  <CustomModalNoContent 
+                    key={"custom-modal-forgot-my-password"}
+                    widthCustomModalNoContent={"31%"}
+                    openCustomModalState={modalForgotMyPasswordIsOpen}
+                    closableCustomModal={true}
+                    maskClosableCustomModal={true}
+                    handleCancelCustomModal={() => setModalForgotMyPasswordIsOpen(false)}
+                    contentCustomModal={<>modal forgot password</>}
+                  />
+                )}
                 <Form.Item style={{ textAlign: "center" }}>
                   <Button
+                    className="login-button"
+                    name="login-button"
+                    id="login-button"
                     type="primary"
                     htmlType="submit"
-                    className="login-button"
                     style={{
                       borderRadius: "30px",
                       textAlign: "center",
                       backgroundColor: "#0085c8",
                     }}
+                    onClick={() => ({})}
                   >
                     Iniciar Sesión
                   </Button>
