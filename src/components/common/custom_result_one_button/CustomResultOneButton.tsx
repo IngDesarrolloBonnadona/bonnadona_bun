@@ -46,13 +46,10 @@ const CustomResultOneButton: React.FC<{
           <Button
             key={"button-custom-result"}
             className="button-custom-result"
-            size="large"
             style={{
-              paddingInline: 31,
-              borderRadius: 31,
-              backgroundColor: "#015E90",
+              borderRadius: "30px",
+              backgroundColor: "#0085c8",
               color: "#f2f2f2",
-              marginInline: 7,
             }}
             onClick={handleClickCustomResult}
             loading={isSubmittingButton}

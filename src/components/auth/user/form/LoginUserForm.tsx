@@ -16,6 +16,7 @@ import TwoFactorAuthModal from "../modal/TwoFactorAuthModal";
 import CustomMessage from "@/components/common/custom_messages/CustomMessage";
 import { titleStyleCss } from "@/theme/text_styles";
 import CustomModalNoContent from "@/components/common/custom_modal_no_content/CustomModalNoContent";
+import UserForgotPasswordForm from "./UserForgotPasswordForm";
 
 const { Title } = Typography;
 
@@ -275,14 +276,22 @@ const LoginUserForm = () => {
                 </Form.Item>
 
                 {modalForgotMyPasswordIsOpen && (
-                  <CustomModalNoContent 
+                  <CustomModalNoContent
                     key={"custom-modal-forgot-my-password"}
                     widthCustomModalNoContent={"31%"}
                     openCustomModalState={modalForgotMyPasswordIsOpen}
                     closableCustomModal={true}
                     maskClosableCustomModal={true}
-                    handleCancelCustomModal={() => setModalForgotMyPasswordIsOpen(false)}
-                    contentCustomModal={<>modal forgot password</>}
+                    handleCancelCustomModal={() =>
+                      setModalForgotMyPasswordIsOpen(false)
+                    }
+                    contentCustomModal={
+                      <UserForgotPasswordForm
+                        setOpenModalForgotPassword={
+                          setModalForgotMyPasswordIsOpen
+                        }
+                      />
+                    }
                   />
                 )}
                 <Form.Item style={{ textAlign: "center" }}>
