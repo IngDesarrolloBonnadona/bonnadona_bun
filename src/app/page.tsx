@@ -1,66 +1,109 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import ButtonAuth from "@/components/auth/ButtonAuth";
+import ButtonAuth from "@/components/auth/user/button/ButtonAuth";
 import { ImagesLinksApp } from "../../public/images_apps/imagesLinksApp";
-import '../app/global.css'
+import "../app/global.css";
+import { Col } from "antd";
 
 const HomePage: React.FC = () => {
   return (
     <div
+      className="homepage"
       style={{
+        width: "100%",
+        height: "100%",
         display: "flex",
-        height: "100vh",
-        justifyContent: "space-around",
-        alignItems: "center",
-        padding: "0 50px",
+        flexFlow: "column wrap",
       }}
     >
-      {/* Lado Izquierdo: Contenido Principal */}
       <div
+        className="background-page"
         style={{
+          position: "fixed",
+          width: "100%",
+          height: "100%",
+          backgroundImage: "url('/background/back-soft-blue-lines-wave.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.4,
+        }}
+      />
+
+      <div
+        className="content-homepage"
+        style={{
+          zIndex: 1,
           display: "flex",
-          flexDirection: "column",
+          flexFlow: "column wrap",
           justifyContent: "center",
-          alignItems: "flex-start",
-          animation: "fadeIn 1s ease-in-out",
+          alignItems: "center",
+          minHeight: "100vh",
         }}
       >
-        {/* Logo Bonnadona */}
-        <Image
-          src={"/logos/LOGO-BONNADONA-2.png"}
-          alt="Logo de Bonnadona"
-          width={300}
-          height={150}
-          style={{ marginBottom: "20px" }}
-        />
-
-        <h1 style={{ fontSize: "2em", margin: "0" }}>Bonnadona HUB</h1>
-        <p style={{ marginBottom: "40px", color: "#8c8c8c" }}>Aplicaciones</p>
-
-        <ButtonAuth />
-      </div>
-
-      {/* Lado Derecho: Imágenes */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "20px",
-          // justifyContent: "center",
-          // alignItems: "center",
-          animation: "slideIn 1s ease-in-out",
-        }}
-      >
-        {ImagesLinksApp.map((src, index) => (
-          <Image
-            key={index}
-            src={src}
-            alt={`Image ${index}`}
-            width={90}
-            height={90}
+        <div
+          className="bonna-logo"
+          style={{
+            // display: "flex",
+            // justifyContent: "left",
+            // paddingTop: "22px",
+            position: "absolute",
+            top: "22px",
+            right: "22px",
+          }}
+        >
+          <img
+            src="/logos/LOGO-BONNADONA.png"
+            alt="Logo de Bonnadona"
+            style={{ height: 80 }}
           />
-        ))}
+        </div>
+
+        <Col
+          xs={24}
+          lg={24}
+          style={{
+            padding: "0px 7px",
+            width: "100vw",
+            maxWidth: "450px",
+            minWidth: "231px",
+          }}
+        >
+          <div
+            className="bonnadona-hub-logo fade-in"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              paddingBlock: "1px",
+            }}
+          >
+            <img
+              src="/logos/LOGO-BONNADONA-HUB.png"
+              alt="Logo de Bonnadona HUB"
+              style={{ height: 120, marginBottom: 30 }}
+            />
+          </div>
+
+          <div className="text">
+            <h3
+              className="presentation-text"
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+                lineHeight: 1.3,
+                marginBottom: 15,
+              }}
+            >
+              Plataforma de acceso a las aplicaciones de la Clínica Bonnadona
+            </h3>
+            <div
+              className="auth-button"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <ButtonAuth />
+            </div>
+          </div>
+        </Col>
       </div>
     </div>
   );
