@@ -25,8 +25,7 @@ const CountdownTimer: React.FC<{
       onFinish={onFinish}
       format="mm:ss"
       valueStyle={{
-        fontSize: 27,
-        fontWeight: "bold",
+        fontSize: 22,
         color: showCountdown ? "#960202" : "#137A2B",
       }}
     />

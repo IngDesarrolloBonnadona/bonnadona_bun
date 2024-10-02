@@ -23,7 +23,7 @@ const { Title } = Typography;
 const LoginUserForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVerifyCodeVisible, setIsModalVerifyCodeVisible] = useState(false);
   const [failedAttemptsCounter, setFailedAttemptsCounter] = useState(1);
   const [modalForgotMyPasswordIsOpen, setModalForgotMyPasswordIsOpen] =
     useState(false);
@@ -44,9 +44,9 @@ const LoginUserForm = () => {
       if (failedAttemptsCounter >= 5) {
         setShowWarningMessage(false);
         setShowErrorMessage(true);
-        setIsModalVisible(false);
+        setIsModalVerifyCodeVisible(false);
       } else {
-        setIsModalVisible(true);
+        setIsModalVerifyCodeVisible(true);
         setShowWarningMessage(false);
         setShowErrorMessage(false);
       }
@@ -66,14 +66,14 @@ const LoginUserForm = () => {
     }
   };
 
-  const handleModalClose = () => {
-    setIsModalVisible(false);
+  const handleModalVerifyCodeClose = () => {
+    setIsModalVerifyCodeVisible(false);
     setShowWarningMessage(false);
   };
 
-  const handleVerify = (code: string) => {
+  const handleVerifyCode = (code: string) => {
     console.log("Código verificado:", code);
-    setIsModalVisible(false);
+    setIsModalVerifyCodeVisible(false);
     setShowWarningMessage(false);
   };
 
@@ -316,9 +316,9 @@ const LoginUserForm = () => {
           </Col>
         </Row>
         <TwoFactorAuthModal
-          visible={isModalVisible}
-          onClose={handleModalClose}
-          onVerify={handleVerify}
+          visible={isModalVerifyCodeVisible}
+          onClose={handleModalVerifyCodeClose}
+          onVerify={handleVerifyCode}
         />
       </div>
     </>
