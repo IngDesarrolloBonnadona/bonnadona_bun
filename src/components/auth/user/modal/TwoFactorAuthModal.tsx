@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+
 import { Modal, Input, Button, Typography, Space, Form, Divider } from "antd";
+import Link from "next/link";
+
 import { MdPassword } from "react-icons/md";
 import { TbPasswordUser } from "react-icons/tb";
+
 import CustomButton from "@/components/common/custom_button/CustomButton";
-import Link from "next/link";
 import CustomSpin from "@/components/common/custom_spin/CustomSpin";
 import CustomLoadingOverlay from "@/components/common/custom_loading_overlay/CustomLoadingOverlay";
-import { maskEmail } from "@/helper/mask_email/mask_email";
 import CountdownTimer from "@/components/common/countdown_timer/CountdownTimer";
+
+import { maskEmail } from "@/helper/mask_email/mask_email";
 
 const { Title } = Typography;
 
@@ -23,6 +27,7 @@ const TwoFactorAuthModal: React.FC<TwoFactorAuthModalProps> = ({
   onVerify,
 }) => {
   const [code, setCode] = useState("");
+
   const [isSubmittingConfirm, setIsSubmittingConfirm] = useState(false);
   const [isSubmittingResendCode, setIsSubmittingResendCode] = useState(false);
 

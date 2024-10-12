@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { useRouter } from "next/navigation";
 
 import { subtitleStyleCss, titleStyleCss } from "@/theme/text_styles";
@@ -66,8 +67,7 @@ const UserForgotPasswordForm: React.FC<{
         margin: "0px",
       }}
     >
-      {linkToResetPasswordSent &&
-      corporateEmailUserOfModalSuccessLocalState ? (
+      {linkToResetPasswordSent && corporateEmailUserOfModalSuccessLocalState ? (
         <CustomResultOneButton
           key={"link-to-reset-password-sent-success-custom-result-user"}
           statusTypeResult={"success"}
@@ -75,12 +75,11 @@ const UserForgotPasswordForm: React.FC<{
           subtitleCustomResult={
             <p>
               Se ha enviado al correo{" "}
-              <b>{maskEmail(corporateEmailUserOfModalSuccessLocalState)}</b>
-              {" "}un link para restablecer su contraseña de ingreso.
+              <b>{maskEmail(corporateEmailUserOfModalSuccessLocalState)}</b> un
+              link para restablecer su contraseña de ingreso.
             </p>
           }
-          //   handleClickCustomResult={handleGoToLogin}
-          handleClickCustomResult={() => ({})}
+          handleClickCustomResult={handleGoToLogin}
           isSubmittingButton={isSubmittingGoToLogin}
           textButtonCustomResult="Volver al login"
         />
