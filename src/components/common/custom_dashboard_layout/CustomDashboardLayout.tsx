@@ -2,17 +2,17 @@
 
 import React, { ReactNode, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+// import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
-import AdminHeaderLayout from "@/components/admin/header_layout_dashboard/AdminHeaderLayout";
+import UserHeaderLayout from "@/components/user/header_layout_dashboard/UserHeaderLayout"
 import { Button, Col, Layout, Menu, Row, theme } from "antd";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { ItemKeys } from "./enums/item_names_and_keys.enums";
-import { useMenuItems } from "@/components/admin/items_menu_dashboard_admin/items_menu_dashboard_admin";
-import {
-  setSelectedKey,
-  setSelectedOpenKeys,
-} from "@/redux/features/common/modal/modalSlice";
+// import { ItemKeys } from "./enums/item_names_and_keys.enums";
+// import { useMenuItems } from "@/components/admin/items_menu_dashboard_admin/items_menu_dashboard_admin";
+// import {
+//   setSelectedKey,
+//   setSelectedOpenKeys,
+// } from "@/redux/features/common/modal/modalSlice";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -22,28 +22,28 @@ const CustomDashboardLayout: React.FC<{
   customLayoutFooter?: any;
 }> = ({ customLayoutHeader, customLayoutContent, customLayoutFooter }) => {
   const router = useRouter();
-  const dispatch = useAppDispatch();
-  const items = useMenuItems();
+  // const dispatch = useAppDispatch();
+  // const items = useMenuItems();
 
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  const selectedKeyState = useAppSelector((state) => state.modal.selectedKey);
-  const selectedOpenKeysState = useAppSelector(
-    (state) => state.modal.selectedOpenKeys
-  );
+  // const selectedKeyState = useAppSelector((state) => state.modal.selectedKey);
+  // const selectedOpenKeysState = useAppSelector(
+  //   (state) => state.modal.selectedOpenKeys
+  // );
 
   const [collapsed, setCollapsed] = useState(false);
 
   const handleMenuClick = (key: string) => {
-    dispatch(setSelectedKey(key));
+    // dispatch(setSelectedKey(key));
 
     router.push(`/admin/dashboard/${key}`);
   };
 
   const handleOpenChange: any = (keys: string[]) => {
-    dispatch(setSelectedOpenKeys(keys));
+    // dispatch(setSelectedOpenKeys(keys));
   };
 
   return (
@@ -105,7 +105,7 @@ const CustomDashboardLayout: React.FC<{
             }}
           />
         </a>
-        <Menu
+        {/* <Menu
           className="custom--dashboard-layout-menu"
           mode="inline"
           items={items}
@@ -118,7 +118,7 @@ const CustomDashboardLayout: React.FC<{
             margin: "0px",
             padding: "0px",
           }}
-        />
+        /> */}
       </Sider>
       <Layout
         className="custom-dashboard-layout-components"
@@ -191,7 +191,7 @@ const CustomDashboardLayout: React.FC<{
                 paddingRight: "17px",
               }}
             >
-              {customLayoutHeader || <AdminHeaderLayout />}
+              {customLayoutHeader || <UserHeaderLayout />}
             </Col>
           </Row>
         </Header>
