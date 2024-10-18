@@ -1,9 +1,14 @@
-import React from 'react'
+import CustomDashboardLayout from "@/components/common/custom_dashboard_layout/CustomDashboardLayout";
+import React from "react";
 
 const AllAppsContent: React.FC = () => {
   return (
-    <div>AllAppsContent</div>
-  )
-}
+    <>
+      <CustomDashboardLayout
+        customLayoutContent={<div>contenido de las apps</div>}
+      />
+    </>
+  );
+};
 
-export default AllAppsContent
+export default AllAppsContent;

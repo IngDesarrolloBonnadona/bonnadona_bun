@@ -48,7 +48,7 @@ const CustomDashboardLayout: React.FC<{
 
   return (
     <Layout
-      className="custom-dashboard-layout-sider"
+      className="custom-dashboard-layout"
       style={{
         minWidth: "777px",
         minHeight: "100vh",
@@ -58,7 +58,7 @@ const CustomDashboardLayout: React.FC<{
         overflow: "auto",
       }}
     >
-      <Sider
+      {/* <Sider
         className="custom--dashboard-layout-sider"
         breakpoint="md"
         collapsedWidth={54}
@@ -105,7 +105,7 @@ const CustomDashboardLayout: React.FC<{
             }}
           />
         </a>
-        {/* <Menu
+        <Menu
           className="custom--dashboard-layout-menu"
           mode="inline"
           items={items}
@@ -118,10 +118,10 @@ const CustomDashboardLayout: React.FC<{
             margin: "0px",
             padding: "0px",
           }}
-        /> */}
-      </Sider>
+        />
+      </Sider> */}
       <Layout
-        className="custom-dashboard-layout-components"
+        className="custom-dashboard-apps-components"
         style={{
           display: "flex",
           flexFlow: "column wrap",
@@ -135,7 +135,7 @@ const CustomDashboardLayout: React.FC<{
           style={{
             display: "flex",
             flexFlow: "row wrap",
-            background: "#013B5A",
+            background: "#0085c8",
             alignItems: "center",
             padding: "0px",
             margin: "0px",
@@ -160,7 +160,7 @@ const CustomDashboardLayout: React.FC<{
                 paddingLeft: "17px",
               }}
             >
-              <Button
+              {/* <Button
                 type="text"
                 icon={
                   collapsed ? (
@@ -175,7 +175,8 @@ const CustomDashboardLayout: React.FC<{
                   height: "37px",
                   backgroundColor: "#00B5E8",
                 }}
-              />
+              /> */}
+              LOGO
             </Col>
 
             <Col
