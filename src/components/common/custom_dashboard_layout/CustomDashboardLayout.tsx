@@ -4,7 +4,7 @@ import React, { ReactNode, useState } from "react";
 import { useRouter } from "next/navigation";
 // import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
-import UserHeaderLayout from "@/components/user/header_layout_dashboard/UserHeaderLayout"
+import UserHeaderLayout from "@/components/user/header_layout_dashboard/UserHeaderLayout";
 import { Button, Col, Layout, Menu, Row, theme } from "antd";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 // import { ItemKeys } from "./enums/item_names_and_keys.enums";
@@ -52,6 +52,7 @@ const CustomDashboardLayout: React.FC<{
       style={{
         minWidth: "777px",
         minHeight: "100vh",
+        height: "100vh", // Asegura que el Layout ocupe toda la pantalla
         backgroundColor: "transparent",
         margin: "0px",
         padding: "0px",
@@ -124,10 +125,11 @@ const CustomDashboardLayout: React.FC<{
         className="custom-dashboard-apps-components"
         style={{
           display: "flex",
-          flexFlow: "column wrap",
+          flexDirection: "column",
           backgroundColor: "#DFEBF2",
           margin: "0px",
           padding: "0px",
+          height: "100%",
         }}
       >
         <Header
@@ -198,34 +200,29 @@ const CustomDashboardLayout: React.FC<{
         </Header>
         <Content
           className="custom--dashboard-layout-content"
-          style={{ margin: "13px 13px" }}
+          style={{
+            margin: "13px 13px",
+            flexGrow: 1,
+            display: "flex",
+            flexFlow: "colum wrap",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: colorBgContainer,
+            borderRadius: borderRadiusLG,
+            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+            padding: "13px",
+          }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexFlow: "column wrap",
-              justifyContent: "center",
-              alignContent: "center",
-              alignItems: "center",
-              backgroundColor: colorBgContainer,
-              borderRadius: borderRadiusLG,
-              boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-              padding: "13px",
-            }}
-          >
-            {customLayoutContent}
-          </div>
+          {customLayoutContent}
         </Content>
         <Footer
           className="custom--dashboard-layout-footer"
           style={{
             height: "13px",
             display: "flex",
-            flexFlow: "column wrap",
             textAlign: "center",
             backgroundColor: colorBgContainer,
             justifyContent: "center",
-            alignContent: "center",
             alignItems: "center",
           }}
         >

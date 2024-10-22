@@ -51,17 +51,6 @@ const UserHeaderLayout: React.FC = () => {
   //     }
   //   }, [nameAdminState, lastNameAdminState]);
 
-  const handleClickUpdatePersonalData = async () => {
-    try {
-      await router.push("/login", {
-        scroll: true,
-      });
-    } catch (error) {
-      console.error(error);
-    } finally {
-    }
-  };
-
   const handleClickSignOut = () => {
     try {
       //   dispatch(resetLoginAdminState());
@@ -93,11 +82,10 @@ const UserHeaderLayout: React.FC = () => {
           //   titleCustomDropdown={`${getFirstName(nameAdminState)} ${getFirstName(
           //     lastNameAdminState
           //   )}`}
-          titleCustomDropdown={`ANDRES SIERRA`}
+          titleCustomDropdown={`HOLA, ANDRES SIERRA`}
           iconCustomItem1={<FaSignOutAlt />}
           titleCustomItem1="Cerrar Sesión"
-          handleClickCustomItem1={handleClickUpdatePersonalData}
-          handleClickCustomItem2={handleClickSignOut}
+          handleClickCustomItem1={handleClickSignOut}
           iconCustomDropdown={<UserOutlined />}
         />
       {/* )} */}
