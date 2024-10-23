@@ -162,23 +162,11 @@ const CustomDashboardLayout: React.FC<{
                 paddingLeft: "17px",
               }}
             >
-              {/* <Button
-                type="text"
-                icon={
-                  collapsed ? (
-                    <MenuUnfoldOutlined style={{ color: "#013B5A" }} />
-                  ) : (
-                    <MenuFoldOutlined style={{ color: "#013B5A" }} />
-                  )
-                }
-                onClick={() => setCollapsed(!collapsed)}
-                style={{
-                  width: "37px",
-                  height: "37px",
-                  backgroundColor: "#00B5E8",
-                }}
-              /> */}
-              LOGO
+              <img
+                src="/logos/LOGO-BONNADONA-HUB-HORIZ.png"
+                alt="Logo de Bonnadona HUB"
+                style={{ height: 60 }}
+              />
             </Col>
 
             <Col
@@ -206,11 +194,11 @@ const CustomDashboardLayout: React.FC<{
             display: "flex",
             flexFlow: "colum wrap",
             justifyContent: "center",
-            alignItems: "center",
+            // alignItems: "center",
             backgroundColor: colorBgContainer,
             borderRadius: borderRadiusLG,
             boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-            padding: "13px",
+            padding: "70px",
           }}
         >
           {customLayoutContent}
@@ -227,7 +215,7 @@ const CustomDashboardLayout: React.FC<{
           }}
         >
           {customLayoutFooter ||
-            `Clínica Bonnadona © ${new Date().getFullYear()}`}
+            `Clínica Bonnadona © ${new Date().getFullYear()}💙`}
         </Footer>
       </Layout>
     </Layout>
