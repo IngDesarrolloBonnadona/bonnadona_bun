@@ -59,68 +59,6 @@ const CustomDashboardLayout: React.FC<{
         overflow: "auto",
       }}
     >
-      {/* <Sider
-        className="custom--dashboard-layout-sider"
-        breakpoint="md"
-        collapsedWidth={54}
-        width={173}
-        onBreakpoint={(broken) => {}}
-        onCollapse={(collapsed, type) => {}}
-        collapsed={collapsed}
-        collapsible
-        trigger={null}
-        style={{
-          backgroundColor: "#013B5A",
-          margin: "0px",
-          padding: "0px",
-          overflow: "auto",
-        }}
-      >
-        <a
-          className="custom--dashboard-layout-logo"
-          style={{
-            display: "flex",
-            flexFlow: "column wrap",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-            backgroundColor: "#f2f2f2",
-            paddingBlock: "22px",
-            overflow: "hidden",
-          }}
-          onClick={() => {
-            router.replace("/admin/dashboard", { scroll: true });
-          }}
-        >
-          <img
-            src={
-              collapsed
-                ? "/logos/LOGO-ICONO-130-X-130-PX.png"
-                : "/logos/LOGO-HORIZONTAL-TRANS-130-X-130-PX.png"
-            }
-            alt="Logo de Proced"
-            style={{
-              maxWidth: collapsed ? "45%" : "77%",
-              height: "auto",
-              objectFit: "contain",
-            }}
-          />
-        </a>
-        <Menu
-          className="custom--dashboard-layout-menu"
-          mode="inline"
-          items={items}
-          selectedKeys={[selectedKeyState]}
-          defaultSelectedKeys={[ItemKeys.ITEM_REQUESTS_KEY]}
-          openKeys={selectedOpenKeysState}
-          onOpenChange={handleOpenChange}
-          onClick={({ key }) => handleMenuClick(key)}
-          style={{
-            margin: "0px",
-            padding: "0px",
-          }}
-        />
-      </Sider> */}
       <Layout
         className="custom-dashboard-apps-components"
         style={{
@@ -165,7 +103,7 @@ const CustomDashboardLayout: React.FC<{
               <img
                 src="/logos/LOGO-BONNADONA-HUB-HORIZ.png"
                 alt="Logo de Bonnadona HUB"
-                style={{ height: 60 }}
+                style={{ height: 60, filter: "drop-shadow(0px 3px 3px white)" }}
               />
             </Col>
 
@@ -192,9 +130,8 @@ const CustomDashboardLayout: React.FC<{
             margin: "13px 13px",
             flexGrow: 1,
             display: "flex",
-            flexFlow: "colum wrap",
+            flexFlow: "row wrap",
             justifyContent: "center",
-            // alignItems: "center",
             backgroundColor: colorBgContainer,
             borderRadius: borderRadiusLG,
             boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
