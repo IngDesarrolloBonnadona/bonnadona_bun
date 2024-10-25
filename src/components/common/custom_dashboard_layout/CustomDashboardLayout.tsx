@@ -50,13 +50,8 @@ const CustomDashboardLayout: React.FC<{
     <Layout
       className="custom-dashboard-layout"
       style={{
-        minWidth: "777px",
-        minHeight: "100vh",
-        height: "100vh", // Asegura que el Layout ocupe toda la pantalla
+        minHeight: "100vh", // Asegura que el layout siempre ocupe el 100% de la ventana
         backgroundColor: "transparent",
-        margin: "0px",
-        padding: "0px",
-        overflow: "auto",
       }}
     >
       <Layout
@@ -65,20 +60,18 @@ const CustomDashboardLayout: React.FC<{
           display: "flex",
           flexDirection: "column",
           backgroundColor: "#DFEBF2",
-          margin: "0px",
-          padding: "0px",
-          height: "100%",
+          minHeight: "100vh" // Asegura que la altura del contenido ocupe al menos el 100% de la pantalla
         }}
       >
         <Header
           className="custom--dashboard-layout-header"
           style={{
-            display: "flex",
-            flexFlow: "row wrap",
+            // display: "flex",
+            // flexFlow: "row wrap",
             background: "#0085c8",
-            alignItems: "center",
+            // alignItems: "center",
             padding: "0px",
-            margin: "0px",
+            // margin: "0px",
           }}
         >
           <Row
@@ -127,15 +120,17 @@ const CustomDashboardLayout: React.FC<{
         <Content
           className="custom--dashboard-layout-content"
           style={{
+            flexGrow: 1, // Permite que el contenido crezca
             margin: "13px 13px",
-            flexGrow: 1,
             display: "flex",
-            flexFlow: "row wrap",
-            justifyContent: "center",
+            flexDirection: "column", // Para que los elementos del contenido fluyan verticalmente
+            alignItems: "center", // Centra horizontalmente el contenido
+            justifyContent: "flex-start", // Alinea las tarjetas en la parte superior
             backgroundColor: colorBgContainer,
             borderRadius: borderRadiusLG,
             boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
             padding: "70px",
+            minHeight: "calc(100vh - 120px)"
           }}
         >
           {customLayoutContent}
@@ -143,12 +138,13 @@ const CustomDashboardLayout: React.FC<{
         <Footer
           className="custom--dashboard-layout-footer"
           style={{
-            height: "13px",
-            display: "flex",
+            // height: "13px",
+            // display: "flex",
             textAlign: "center",
             backgroundColor: colorBgContainer,
             justifyContent: "center",
             alignItems: "center",
+            padding: "20px",
           }}
         >
           {customLayoutFooter ||
