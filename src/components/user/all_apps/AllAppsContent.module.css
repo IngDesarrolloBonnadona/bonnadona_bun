@@ -1,7 +1,7 @@
 .card {
     box-sizing: border-box;
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     background: rgba(217, 217, 217, 0.58);
     border: 1px solid white;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.22);

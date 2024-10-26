@@ -1,12 +1,11 @@
 "use client";
 
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import { useRouter } from "next/navigation";
 // import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 import UserHeaderLayout from "@/components/user/header_layout_dashboard/UserHeaderLayout";
-import { Button, Col, Layout, Menu, Row, theme } from "antd";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Button, Col, Layout, Row, theme } from "antd";
 // import { ItemKeys } from "./enums/item_names_and_keys.enums";
 // import { useMenuItems } from "@/components/admin/items_menu_dashboard_admin/items_menu_dashboard_admin";
 // import {
@@ -14,7 +13,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 //   setSelectedOpenKeys,
 // } from "@/redux/features/common/modal/modalSlice";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
 const CustomDashboardLayout: React.FC<{
   customLayoutHeader?: ReactNode;
@@ -34,23 +33,11 @@ const CustomDashboardLayout: React.FC<{
   //   (state) => state.modal.selectedOpenKeys
   // );
 
-  const [collapsed, setCollapsed] = useState(false);
-
-  const handleMenuClick = (key: string) => {
-    // dispatch(setSelectedKey(key));
-
-    router.push(`/admin/dashboard/${key}`);
-  };
-
-  const handleOpenChange: any = (keys: string[]) => {
-    // dispatch(setSelectedOpenKeys(keys));
-  };
-
   return (
     <Layout
       className="custom-dashboard-layout"
       style={{
-        minHeight: "100vh", // Asegura que el layout siempre ocupe el 100% de la ventana
+        minHeight: "100vh",
         backgroundColor: "transparent",
       }}
     >
@@ -60,18 +47,18 @@ const CustomDashboardLayout: React.FC<{
           display: "flex",
           flexDirection: "column",
           backgroundColor: "#DFEBF2",
-          minHeight: "100vh" // Asegura que la altura del contenido ocupe al menos el 100% de la pantalla
+          minHeight: "100vh",
         }}
       >
         <Header
           className="custom--dashboard-layout-header"
           style={{
-            // display: "flex",
-            // flexFlow: "row wrap",
             background: "#0085c8",
-            // alignItems: "center",
             padding: "0px",
-            // margin: "0px",
+            position: "fixed",
+            width: "100%",
+            top: 0,
+            zIndex: 1000,
           }}
         >
           <Row
@@ -120,17 +107,15 @@ const CustomDashboardLayout: React.FC<{
         <Content
           className="custom--dashboard-layout-content"
           style={{
-            flexGrow: 1, // Permite que el contenido crezca
+            flexGrow: 1,
             margin: "13px 13px",
+            marginTop: "80px",
             display: "flex",
-            flexDirection: "column", // Para que los elementos del contenido fluyan verticalmente
-            alignItems: "center", // Centra horizontalmente el contenido
-            justifyContent: "flex-start", // Alinea las tarjetas en la parte superior
+            justifyContent: "center",
             backgroundColor: colorBgContainer,
             borderRadius: borderRadiusLG,
             boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
             padding: "70px",
-            minHeight: "calc(100vh - 120px)"
           }}
         >
           {customLayoutContent}
@@ -138,8 +123,6 @@ const CustomDashboardLayout: React.FC<{
         <Footer
           className="custom--dashboard-layout-footer"
           style={{
-            // height: "13px",
-            // display: "flex",
             textAlign: "center",
             backgroundColor: colorBgContainer,
             justifyContent: "center",
