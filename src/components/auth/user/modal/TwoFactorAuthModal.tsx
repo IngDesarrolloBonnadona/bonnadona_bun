@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import { Modal, Input, Button, Typography, Space, Form } from "antd";
+
+import { Modal, Input, Button, Typography, Space, Form, Divider } from "antd";
+import Link from "next/link";
+
 import { MdPassword } from "react-icons/md";
 import { TbPasswordUser } from "react-icons/tb";
+
 import CustomButton from "@/components/common/custom_button/CustomButton";
-import Link from "next/link";
 import CustomSpin from "@/components/common/custom_spin/CustomSpin";
 import CustomLoadingOverlay from "@/components/common/custom_loading_overlay/CustomLoadingOverlay";
+import CountdownTimer from "@/components/common/countdown_timer/CountdownTimer";
+
 import { maskEmail } from "@/helper/mask_email/mask_email";
 
 const { Title } = Typography;
@@ -22,9 +27,11 @@ const TwoFactorAuthModal: React.FC<TwoFactorAuthModalProps> = ({
   onVerify,
 }) => {
   const [code, setCode] = useState("");
+
   const [isSubmittingConfirm, setIsSubmittingConfirm] = useState(false);
-  const [resendCodeDisable, setResendCodeDisable] = useState(true);
   const [isSubmittingResendCode, setIsSubmittingResendCode] = useState(false);
+
+  const [resendCodeDisable, setResendCodeDisable] = useState(true);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCode(e.target.value);
@@ -110,6 +117,15 @@ const TwoFactorAuthModal: React.FC<TwoFactorAuthModalProps> = ({
 
           {/* <CustomLoadingOverlay isLoading={isPageLoadingState} /> */}
 
+          {resendCodeDisable && (
+            <CountdownTimer
+              onFinishHandler={() => {
+                setResendCodeDisable(false);
+              }}
+              showCountdown={resendCodeDisable}
+            />
+          )}
+
           <Form
             id="form-verify-code-modal"
             name="form-verify-code-modal"
@@ -172,71 +188,74 @@ const TwoFactorAuthModal: React.FC<TwoFactorAuthModalProps> = ({
               />
             </Form.Item>
 
-            <Button
-              key={"confirm-code-button"}
-              className="confirm-code-button"
-              style={{
-                backgroundColor: "#0085c8",
-                color: "#f2f2f2",
-                borderRadius: 31,
-                marginTop: 5,
-                marginBottom: 13,
-              }}
-              htmlType="submit"
-              onClick={handleButtonClick}
-            >
-              Confirmar código
-            </Button>
-            {/* )} */}
+            {isSubmittingConfirm ? (
+              <CustomSpin />
+            ) : (
+              <Button
+                key={"confirm-code-button"}
+                className="confirm-code-button"
+                style={{
+                  backgroundColor: "#0085c8",
+                  color: "#f2f2f2",
+                  borderRadius: 31,
+                  marginTop: 5,
+                  marginBottom: 13,
+                }}
+                htmlType="submit"
+                onClick={handleButtonClick}
+              >
+                Confirmar código
+              </Button>
+            )}
           </Form>
+
+          {isSubmittingResendCode && !resendCodeDisable ? (
+            <CustomSpin />
+          ) : (
+            <Button
+              key="resend-button-user"
+              className="resend-button-user"
+              disabled={resendCodeDisable}
+              style={{
+                backgroundColor: resendCodeDisable ? "#D8D8D8" : "transparent",
+                color: resendCodeDisable ? "#A0A0A0" : "#0085c8",
+                borderColor: resendCodeDisable ? "#A0A0A0" : "#0085c8",
+                paddingInline: 13,
+                borderRadius: 31,
+                borderWidth: 1.3,
+              }}
+              onClick={handleResentCode}
+              onMouseDown={handleButtonClick}
+            >
+              Reenviar código
+            </Button>
+          )}
+
+          {/* <div style={{ marginInline: 54 }}>
+            <Divider
+              style={{
+                marginBlock: 13,
+                borderWidth: 2,
+              }}
+            />
+          </div>
+
+          <Button
+            key="cancel-button-user"
+            className="cancel-button-user"
+            style={{
+              paddingInline: 45,
+              backgroundColor: "#e33030",
+              color: "#f2f2f2",
+              borderRadius: 31,
+            }}
+            onClick={handleCancel}
+          >
+            Cancelar
+          </Button> */}
         </div>
       </Modal>
     </div>
-
-    // <Modal centered open={visible} onCancel={onClose} footer={null}>
-    //   <div style={{ textAlign: "center" }}>
-    //     <Title level={5} style={{ marginBottom: "1rem" }}>
-    //       Ingresa el código de verificación
-    //     </Title>
-    //     <Input
-    //       className="custom-input"
-    //       placeholder="Código"
-    //       value={code}
-    //       onChange={handleChange}
-    //       style={{ borderRadius: "30px" }}
-    //     />
-    //     <Space>
-    //       <CustomButton
-    //         classNameCustomButton="verify-code-button"
-    //         idCustomButton="verify-code-button"
-    //         titleCustomButton="Verificar código"
-    //         typeCustomButton="primary"
-    //         htmlTypeCustomButton="submit"
-    //         onClickCustomButton={() => handleVerify()}
-    //         styleCustomButton={{
-    //           marginTop: "16px",
-    //           borderRadius: "30px",
-    //           textAlign: "center",
-    //           background: "#015E90",
-    //           color: "#ffffff",
-    //         }}
-    //         sizeCustomButton={"middle"}
-    //       />
-    //     </Space>
-    //     {/* <Button
-    //       type="primary"
-    //       onClick={handleVerify}
-    //       style={{
-    //         marginTop: "1rem",
-    //         borderRadius: "30px",
-    //         textAlign: "center",
-    //         backgroundColor: "#0085c8",
-    //       }}
-    //     >
-    //       Verificar
-    //     </Button> */}
-    //   </div>
-    // </Modal>
   );
 };
 

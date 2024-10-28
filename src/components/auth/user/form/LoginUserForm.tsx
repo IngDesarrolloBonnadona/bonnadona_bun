@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+
 import {
   Form,
   Input,
@@ -10,70 +11,81 @@ import {
   Row,
   Image,
 } from "antd";
+
 import { UserOutlined } from "@ant-design/icons";
 import { RiLockPasswordLine } from "react-icons/ri";
+
 import TwoFactorAuthModal from "../modal/TwoFactorAuthModal";
-import CustomMessage from "@/components/common/custom_messages/CustomMessage";
-import { titleStyleCss } from "@/theme/text_styles";
-import CustomModalNoContent from "@/components/common/custom_modal_no_content/CustomModalNoContent";
 import UserForgotPasswordForm from "./UserForgotPasswordForm";
+
+import CustomMessage from "@/components/common/custom_messages/CustomMessage";
+import CustomModalNoContent from "@/components/common/custom_modal_no_content/CustomModalNoContent";
+
+import { titleStyleCss } from "@/theme/text_styles";
 
 const { Title } = Typography;
 
 const LoginUserForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [failedAttemptsCounter, setFailedAttemptsCounter] = useState(1);
+  const [emailLocalState, setEmailLocalState] = useState("");
+  const [passwordLocalState, setPasswordLocalState] = useState("");
+
+  const [isModalVerifyCodeVisible, setIsModalVerifyCodeVisible] =
+    useState(false);
   const [modalForgotMyPasswordIsOpen, setModalForgotMyPasswordIsOpen] =
     useState(false);
 
   const [showWarningMessage, setShowWarningMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
+  const [failedAttemptsCounterLocalState, setFailedAttemptsCounterLocalState] =
+    useState(1);
+
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
+    setEmailLocalState(event.target.value);
   };
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
+    setPasswordLocalState(event.target.value);
   };
 
   const handleSubmit = () => {
-    if (email === "andres@gmail.com" && password === "1234") {
-      if (failedAttemptsCounter >= 5) {
+    if (
+      emailLocalState === "andres@gmail.com" &&
+      passwordLocalState === "1234"
+    ) {
+      if (failedAttemptsCounterLocalState >= 5) {
         setShowWarningMessage(false);
         setShowErrorMessage(true);
-        setIsModalVisible(false);
+        setIsModalVerifyCodeVisible(false);
       } else {
-        setIsModalVisible(true);
+        setIsModalVerifyCodeVisible(true);
         setShowWarningMessage(false);
         setShowErrorMessage(false);
       }
     } else {
-      var count = failedAttemptsCounter;
-      setFailedAttemptsCounter((count += 1));
-      console.log("failedAttemptsCounter", failedAttemptsCounter);
+      var count = failedAttemptsCounterLocalState;
+      setFailedAttemptsCounterLocalState((count += 1));
+      console.log("failedAttemptsCounter", failedAttemptsCounterLocalState);
 
-      if (failedAttemptsCounter === 3) {
+      if (failedAttemptsCounterLocalState === 3) {
         setShowWarningMessage(true);
       }
 
-      if (failedAttemptsCounter >= 5) {
+      if (failedAttemptsCounterLocalState >= 5) {
         setShowWarningMessage(false);
         setShowErrorMessage(true);
       }
     }
   };
 
-  const handleModalClose = () => {
-    setIsModalVisible(false);
+  const handleModalVerifyCodeClose = () => {
+    setIsModalVerifyCodeVisible(false);
     setShowWarningMessage(false);
   };
 
-  const handleVerify = (code: string) => {
+  const handleVerifyCode = (code: string) => {
     console.log("Código verificado:", code);
-    setIsModalVisible(false);
+    setIsModalVerifyCodeVisible(false);
     setShowWarningMessage(false);
   };
 
@@ -231,7 +243,7 @@ const LoginUserForm = () => {
                     prefix={
                       <UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />
                     }
-                    value={email}
+                    value={emailLocalState}
                     style={{ borderRadius: "30px" }}
                     onChange={handleEmailChange}
                   />
@@ -255,7 +267,7 @@ const LoginUserForm = () => {
                         style={{ color: "rgba(0,0,0,.25)" }}
                       />
                     }
-                    value={password}
+                    value={passwordLocalState}
                     placeholder="Contraseña"
                     style={{ borderRadius: "30px" }}
                     onChange={handlePasswordChange}
@@ -316,9 +328,9 @@ const LoginUserForm = () => {
           </Col>
         </Row>
         <TwoFactorAuthModal
-          visible={isModalVisible}
-          onClose={handleModalClose}
-          onVerify={handleVerify}
+          visible={isModalVerifyCodeVisible}
+          onClose={handleModalVerifyCodeClose}
+          onVerify={handleVerifyCode}
         />
       </div>
     </>
